@@ -28,10 +28,10 @@ export const metadata: Metadata = {
     siteName: "The Wealth Network",
     images: [
       {
-        url: "/financial-advisor-meeting.png",
+        url: "/bitcoin-group-with-chart.jpg",
         width: 1200,
         height: 630,
-        alt: "Professional financial advisor meeting - The Wealth Network",
+        alt: "Gold Bitcoin coin on growth chart background - The Wealth Network",
       },
     ],
   },
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Wealth Network - Master the Markets",
     description: "Professional-grade market insights, real-time analysis, and expert guidance for investors",
-    images: ["/financial-advisor-meeting.png"],
+    images: ["/bitcoin-group-with-chart.jpg"],
   },
   robots: {
     index: true,
