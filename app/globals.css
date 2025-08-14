@@ -328,3 +328,32 @@
 .social-proof-bounce {
   animation: bounce 1s ease-in-out;
 }
+
+/* Hero button specific styles for better contrast */
+.hero-outline-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-outline-button:hover {
+  text-shadow: 0 0 8px rgba(220, 178, 12, 0.8);
+}
+
+.hero-outline-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(221, 190, 11, 0.1), rgba(255, 215, 0, 0.2));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.hero-outline-button:hover::before {
+  opacity: 1;
+}
+
+

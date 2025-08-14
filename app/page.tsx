@@ -164,7 +164,7 @@ export default function WealthNetworkLanding() {
             <Button
               variant="outline"
               size="lg"
-              className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 border-accent text-accent hover:bg-accent/10 bg-transparent transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/25 hover:border-accent/80"
+              className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 border-accent hover:text-base text-accent transform transition-all duration-300 hover:bg-primary/90 hover:border-accent/80 hover:scale-105 hover:shadow-lg hover:text-yellow-500 animate-pulse-glow"
               onClick={scrollToPricing}
             >
               View Plans
@@ -288,7 +288,6 @@ export default function WealthNetworkLanding() {
                 key={index}
                 className="border-border hover:border-accent/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/10 group"
                 style={{
-                  animationDelay: `${index * 0.2}s`,
                   animation: "fadeInUp 0.6s ease-out forwards",
                 }}
               >
