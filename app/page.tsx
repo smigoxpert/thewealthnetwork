@@ -15,7 +15,12 @@ export default function WealthNetworkLanding() {
       price: "$5",
       period: "/month",
       description: "Perfect for beginners starting their investment journey",
-      features: ["Basic market analysis", "Weekly market updates", "Educational resources", "Community access"],
+      features: [
+        "Stock + ETF recommendations",
+        "Graphs and visuals",
+        "Calculate your growth",
+        "Access to learners community"
+      ],
       whopLink: "https://whop.com/the-wealth-network-777/?productId=prod_ucx3uikBge36Z&a=smigo",
       popular: false,
       icon: <BarChart3 className="h-6 w-6" />,
@@ -25,7 +30,13 @@ export default function WealthNetworkLanding() {
       price: "$19",
       period: "/month",
       description: "Advanced tools for serious investors",
-      features: ["Daily market insights", "Stock recommendations", "Portfolio tracking", "Risk assessment tools"],
+      features: [
+        "How to open an investment account",
+        "Risk assessment tools",
+        "Portfolio planning",
+        "Roth IRA + High Yield Savings",
+        "Investing games"
+      ],
       whopLink: "https://whop.com/the-wealth-network-777/?productId=prod_lgVNWELjgDIxd&a=smigo",
       popular: true,
       icon: <TrendingUp className="h-6 w-6" />,
@@ -36,12 +47,12 @@ export default function WealthNetworkLanding() {
       period: "/month",
       description: "Professional-grade analysis and strategies",
       features: [
-        "Advanced analytics",
-        "Options strategies",
-        "Priority support",
-        "Constant updates on the economy",
+        "Weekly market updates",
+        "Build your first 100k",
+        "Maximize your streams of income",
         "High risk high reward stocks (>+100%)",
-        "Free to access books, podcasts, articles, videos, research",
+        "Library of free resources–books, podcasts, articles, videos, research",
+        "Access to networking opportunities",
       ],
       whopLink: "https://whop.com/the-wealth-network-777/?productId=prod_BRUYsr7BYGhJN&a=smigo",
       popular: false,
@@ -53,11 +64,11 @@ export default function WealthNetworkLanding() {
       period: "/ 3 months",
       description: "Personalized mentorship and exclusive access",
       features: [
-        "Everything in Mastering",
-        "Personal trading mentor",
-        "Weekly 1-on-1 calls",
-        "Custom strategies",
-        "Exclusive market insights",
+        "Private meetings",
+        "Weekly lesson and action plans",
+        "Build your own business",
+        "Reduce your taxes",
+        "Private connections and networking",
       ],
       whopLink: "https://whop.com/the-wealth-network-777/?a=investwithserenity&productId=prod_LpsPY0QGRhlYG",
       popular: false,
@@ -94,19 +105,24 @@ export default function WealthNetworkLanding() {
 
   const faqs = [
     {
+      question: "What makes you different from other investment services?",
+      answer:
+        "I remember what it was like to not understand a thing about finance, and my goal is to help you comprehend these topics in a way that serves you, not confuses you more. I want you to succeed, I want you to be able to pay for college or even your kids' college. I want you to retire comfortably, have money for emergencies, pay for medical expenses with stocks, learn to budget so you can enjoy the little things too, and take control of money instead of letting it control you.",
+    },
+    {
       question: "Is this suitable for complete beginners?",
       answer:
-        "Our Learner plan is specifically designed for beginners. We provide educational resources, basic market analysis, and community support to help you start your investment journey safely.",
+        "Absolutely. I have designed it to provide every single thing a beginner needs to understand and execute. If you are ready to start investing, you will immediately be given access to all the content in the learners plan, so you have all the knowledge you need to set yourself up for life.",
     },
     {
       question: "How quickly will I see results?",
       answer:
-        "Results vary by individual, but many members see positive changes in their investment approach within the first month. Remember, investing is a long-term strategy, and we focus on sustainable growth rather than quick gains.",
+        "Immediately. Once you comprehend life-changing knowledge, results will take effect as soon as you process the information. In regards to monetary success–it is dependent on your initial deposit, but the markets are always increasing, therefore so are your investments. But remember: Compound interest is where the magic is.",
     },
     {
-      question: "Do you provide investment advice?",
+      question: "Do you choose and build my investment portfolio?",
       answer:
-        "We provide educational content, market analysis, and insights to help you make informed decisions. However, we don't provide personalized financial advice. Always consult with a licensed financial advisor for your specific situation.",
+        "No, you build your own portfolio based on the condensed quality information I present. I am not a financial advisor, I am an educator. We provide non-bias, clear and common investment options to help you make informed and thought out decisions.",
     },
     {
       question: "Can I cancel anytime?",
@@ -114,9 +130,9 @@ export default function WealthNetworkLanding() {
         "Yes, all our plans are month-to-month (except the 3-month mentorship program) and you can cancel anytime. No long-term contracts or hidden fees.",
     },
     {
-      question: "What makes you different from other investment services?",
+      question: "Why do you teach this, and where did you learn?",
       answer:
-        "We focus on education-first approach, real-time market insights, and building a supportive community. Our tiered system allows you to grow with us, from beginner to advanced investor.",
+        "I want to bring financial literacy to the low-and-middle class because this type of education is systematically denied to keep them relying on a system of consumerism and debt. Honestly, it makes me really angry. I want to help people learn and adopt the strategies of the privileged, because knowledge isn't something that should be kept for one group of people. It is my mission to make financial intelligence affordable and achievable. One side of my family came from poverty in rural China, and the other came from the suburban working class. I watched my dad learn and build himself into a successful man in adulthood, and he is the one that sparked my passion with investing. I genuinely love this topic so much and money is so incredibly fascinating to me. I have read book after book, watched a million videos, researched it for hours, and learned through my own experiences. Now it is time for me to help you!",
     },
   ]
 
@@ -150,7 +166,10 @@ export default function WealthNetworkLanding() {
             The Wealth Network
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-            Master the markets with professional-grade insights, real-time analysis, and expert guidance
+            Start your investing journey fully equipped with the knowledge to succeed.
+          </p>
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
+            Don’t guess success–choose it.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
@@ -177,10 +196,9 @@ export default function WealthNetworkLanding() {
       <section id="pricing" className="py-12 sm:py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Choose Your Path to Wealth</h2>
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-              From beginner-friendly guidance to professional-grade analysis, we have the perfect plan for your
-              investment journey
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Choose Your Level of Wealth</h2>
+            <p className="text-lg sm:text-md text-muted-foreground max-w-2xl mx-auto">
+            We believe investing should be something you actually understand and enjoy. That is why we teach in a way that feels human to human, not like a boring econ textbook. Whether you’re an absolute beginner, or someone looking to further scale their wealth, there is a place for everyone here
             </p>
           </div>
 
