@@ -258,13 +258,12 @@ export default function WealthNetworkLanding() {
             {/* Left side - Content */}
             <div className="text-center lg:text-left space-y-6 sm:space-y-8 pl-5">
               <div className="space-y-4 sm:space-y-6">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent animate-fade-in-up">
-                  Know your investments.<br />
-                  <span className="text-accent">Money grows where knowledge flows.</span>
+                                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-foreground animate-fade-in-up">
+                 Money grows where <span className="text-accent">knowledge</span> flows.
                 </h1>
                 <div className="space-y-3 sm:space-y-4">
                   <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed animate-fade-in-up animation-delay-200">
-                    You don't have to figure it out alone. The Wealth Network connects you with the knowledge, tools, guidance, and community to grow your money.
+                    You don't have to figure it out alone. <span className="text-yellow-500">The Wealth Network</span> connects you with the knowledge, tools, guidance, and community to grow your money.
                   </p>
                 </div>
               </div>
@@ -314,8 +313,8 @@ export default function WealthNetworkLanding() {
                     </div>
                     
                     <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 bg-card/80 backdrop-blur-sm border border-border/20 rounded-lg p-2 sm:p-3">
-                      <div className="text-xs text-muted-foreground">Portfolio Value</div>
-                      <div className="text-sm sm:text-base font-bold text-accent">$24,870</div>
+                      <div className="text-xs text-muted-foreground">Growth Track</div>
+                      <div className="text-sm sm:text-base font-bold text-accent">On Target</div>
                     </div>
                   </div>
                 </div>
@@ -337,7 +336,7 @@ export default function WealthNetworkLanding() {
         }`}>
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <Badge className="mb-4 bg-accent/10 text-accent border-accent/20 text-sm sm:text-base px-3 py-1">
-              FREE TO JOIN
+              <span className="text-white">FREE TO JOIN</span>
             </Badge>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 leading-tight">
               Start Your Journey in Our Discord Community
