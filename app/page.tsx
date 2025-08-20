@@ -3,11 +3,55 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Check, TrendingUp, BarChart3, DollarSign, Users, Instagram, ChevronDown, MessageSquare, BookOpen, PlayCircle, TrendingUp as Growth } from "lucide-react"
-import { useState } from "react"
+import { Check, TrendingUp, BarChart3, DollarSign, Users, Instagram, ChevronDown, MessageSquare, BookOpen, PlayCircle, TrendingUp as Growth, Shield, Heart, Award } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
 
 export default function WealthNetworkLanding() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+
+  // Custom hook for scroll animations
+  const useScrollAnimation = () => {
+    const [isVisible, setIsVisible] = useState(false)
+    const [isHydrated, setIsHydrated] = useState(false)
+    const ref = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+      // Mark as hydrated to prevent SSR mismatch
+      setIsHydrated(true)
+      
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+            observer.unobserve(entry.target)
+          }
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px"
+        }
+      )
+
+      const currentRef = ref.current
+      if (currentRef) {
+        observer.observe(currentRef)
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef)
+        }
+      }
+    }, [])
+
+    return [ref, isHydrated && isVisible] as const
+  }
+
+  // Initialize scroll animations for different sections
+  const [discordRef, discordVisible] = useScrollAnimation()
+  const [pricingRef, pricingVisible] = useScrollAnimation()
+  const [faqRef, faqVisible] = useScrollAnimation()
+  const [testimonialsRef, testimonialsVisible] = useScrollAnimation()
 
   const pricingPlans = [
     {
@@ -203,46 +247,94 @@ export default function WealthNetworkLanding() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-20 px-4 text-center overflow-hidden">
+      <section className="relative py-8 sm:py-12 lg:py-20 px-3 sm:px-4 overflow-hidden min-h-[80vh] flex items-center">
         <div className="absolute inset-0 bg-gradient-to-br from-card/10 to-transparent"></div>
         <div className="absolute top-20 left-10 w-20 h-20 bg-accent/10 rounded-full blur-xl animate-float"></div>
         <div className="absolute bottom-20 right-10 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-float-delayed"></div>
         <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-accent/5 rounded-full blur-lg animate-pulse"></div>
 
-        <div className="relative max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent animate-fade-in-up">
-            The Wealth Network
-          </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-            Start your investing journey fully equipped with the knowledge to succeed.
-          </p>
-          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-          Money grows where knowledge flows.
-          </p>
+        <div className="relative max-w-7xl mx-auto w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left side - Content */}
+            <div className="text-center lg:text-left space-y-6 sm:space-y-8 pl-5">
+              <div className="space-y-4 sm:space-y-6">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent animate-fade-in-up">
+                  Know your investments.<br />
+                  <span className="text-accent">Money grows where knowledge flows.</span>
+                </h1>
+                <div className="space-y-3 sm:space-y-4">
+                  <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed animate-fade-in-up animation-delay-200">
+                    You don't have to figure it out alone. The Wealth Network connects you with the knowledge, tools, guidance, and community to grow your money.
+                  </p>
+                </div>
+              </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
-            <Button
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25 animate-pulse-glow"
-              onClick={() => window.open(pricingPlans.find((plan) => plan.popular)?.whopLink, "_blank")}
-            >
-              <span className="relative z-10">Start Your Journey</span>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 border-accent hover:text-base text-accent transform transition-all duration-300 hover:bg-primary/90 hover:border-accent/80 hover:scale-105 hover:shadow-lg hover:text-yellow-500 animate-pulse-glow"
-              onClick={scrollToPricing}
-            >
-              View Plans
-            </Button>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:justify-start justify-center animate-fade-in-up animation-delay-400">
+                <Button
+                  size="lg"
+                  className="bg-accent text-accent-foreground hover:bg-accent/90 text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/25 font-semibold rounded-xl"
+                  onClick={() => window.open(pricingPlans.find((plan) => plan.popular)?.whopLink, "_blank")}
+                >
+                  <span className="relative z-10">Get Started</span>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 border-accent/20 text-foreground hover:bg-accent/5 hover:border-accent/40 transform transition-all duration-300 hover:scale-105 font-semibold rounded-xl"
+                  onClick={scrollToPricing}
+                >
+                  View Plans
+                </Button>
+              </div>
+            </div>
+
+            {/* Right side - Image/Visual */}
+            <div className="relative lg:order-last order-first">
+              <div className="relative">
+                {/* Background decorative elements */}
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-3xl blur-3xl transform rotate-3 scale-105"></div>
+                <div className="absolute inset-0 bg-gradient-to-tl from-primary/10 to-accent/10 rounded-3xl blur-2xl transform -rotate-2"></div>
+                
+                {/* Main image container */}
+                <div className="relative bg-card/20 backdrop-blur-sm border border-border/20 rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-2xl">
+                  {/* Owner Image */}
+                  <div className="aspect-[4/3] lg:aspect-[3/4] rounded-xl lg:rounded-2xl relative overflow-hidden">
+                    <img
+                      src="/owner.webp"
+                      alt="The Wealth Network Founder"
+                      className="w-full h-full object-cover object-center"
+                    />
+                    
+                    {/* Floating elements to simulate app UI */}
+                    <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-card/80 backdrop-blur-sm border border-border/20 rounded-lg p-2 sm:p-3">
+                      <div className="flex items-center gap-1 sm:gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span className="text-xs font-medium text-foreground">+12.5%</span>
+                      </div>
+                    </div>
+                    
+                    <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 bg-card/80 backdrop-blur-sm border border-border/20 rounded-lg p-2 sm:p-3">
+                      <div className="text-xs text-muted-foreground">Portfolio Value</div>
+                      <div className="text-sm sm:text-base font-bold text-accent">$24,870</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Discord Section */}
-      <section className="py-8 sm:py-12 lg:py-20 px-3 sm:px-4 bg-gradient-to-br from-primary/5 to-accent/5">
-        <div className="max-w-6xl mx-auto">
+      <section 
+        ref={discordRef}
+        className="py-8 sm:py-12 lg:py-20 px-3 sm:px-4 bg-gradient-to-br from-primary/5 to-accent/5"
+      >
+        <div className={`max-w-6xl mx-auto transition-all duration-1000 ease-out ${
+          discordVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-8'
+        }`}>
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <Badge className="mb-4 bg-accent/10 text-accent border-accent/20 text-sm sm:text-base px-3 py-1">
               FREE TO JOIN
@@ -251,14 +343,18 @@ export default function WealthNetworkLanding() {
               Start Your Journey in Our Discord Community
             </h2>
             <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Get started with essential investing knowledge before diving into our premium plans. Perfect for complete beginners!
+              Get started with essential investing knowledge. Perfect for complete beginners!
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
             {/* Left side - Features */}
             <div className="space-y-4 sm:space-y-6">
-              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-card/20 border border-border/50">
+              <div className={`flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-card/20 border border-border/50 transition-all duration-700 ease-out delay-200 ${
+                discordVisible 
+                  ? 'opacity-100 translate-x-0' 
+                  : 'opacity-0 -translate-x-4'
+              }`}>
                 <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-xl flex items-center justify-center">
                   <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
                 </div>
@@ -272,7 +368,11 @@ export default function WealthNetworkLanding() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-card/20 border border-border/50">
+              <div className={`flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-card/20 border border-border/50 transition-all duration-700 ease-out delay-300 ${
+                discordVisible 
+                  ? 'opacity-100 translate-x-0' 
+                  : 'opacity-0 -translate-x-4'
+              }`}>
                 <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-xl flex items-center justify-center">
                   <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
                 </div>
@@ -286,7 +386,11 @@ export default function WealthNetworkLanding() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-card/20 border border-border/50">
+              <div className={`flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-card/20 border border-border/50 transition-all duration-700 ease-out delay-500 ${
+                discordVisible 
+                  ? 'opacity-100 translate-x-0' 
+                  : 'opacity-0 -translate-x-4'
+              }`}>
                 <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-xl flex items-center justify-center">
                   <Growth className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
                 </div>
@@ -300,7 +404,11 @@ export default function WealthNetworkLanding() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-card/20 border border-border/50">
+              <div className={`flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-card/20 border border-border/50 transition-all duration-700 ease-out delay-700 ${
+                discordVisible 
+                  ? 'opacity-100 translate-x-0' 
+                  : 'opacity-0 -translate-x-4'
+              }`}>
                 <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-xl flex items-center justify-center">
                   <PlayCircle className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
                 </div>
@@ -316,13 +424,19 @@ export default function WealthNetworkLanding() {
             </div>
 
             {/* Right side - CTA Card */}
-            <div className="relative">
+            <div className={`relative transition-all duration-1000 ease-out delay-300 ${
+              discordVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}>
               <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-3xl blur-2xl transform rotate-2"></div>
               <Card className="relative border-accent/20 bg-card/90 backdrop-blur-sm">
                 <CardContent className="p-6 sm:p-8 text-center">
                   <div className="mb-6">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                      <MessageSquare className="w-8 h-8 sm:w-10 sm:h-10 text-accent" />
+                      <svg className="w-8 h-8 sm:w-10 sm:h-10 text-accent" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418Z"/>
+                      </svg>
                     </div>
                     <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 text-foreground">
                       Join Our Discord
@@ -341,7 +455,7 @@ export default function WealthNetworkLanding() {
                   <Button 
                     size="lg" 
                     className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-base sm:text-lg px-6 py-3 sm:py-4 rounded-xl font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/25"
-                    onClick={() => window.open("https://discord.gg/your-discord-link", "_blank")}
+                    onClick={() => window.open("https://discord.gg/TkWgtyQADg", "_blank")}
                   >
                     Join Discord Community
                   </Button>
@@ -357,8 +471,16 @@ export default function WealthNetworkLanding() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-12 sm:py-20 px-4">
-        <div className="max-w-7xl mx-auto">
+      <section 
+        id="pricing" 
+        ref={pricingRef}
+        className="py-12 sm:py-20 px-4"
+      >
+        <div className={`max-w-7xl mx-auto transition-all duration-1000 ease-out ${
+          pricingVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-8'
+        }`}>
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Choose Your Level of Wealth</h2>
             <p className="text-lg sm:text-md text-muted-foreground max-w-2xl mx-auto">
@@ -370,8 +492,16 @@ export default function WealthNetworkLanding() {
             {pricingPlans.map((plan, index) => (
               <Card
                 key={plan.name}
-                className={`relative transition-all duration-300 hover:scale-105 ${
+                className={`relative transition-all duration-700 ease-out hover:scale-105 ${
                   plan.popular ? "border-accent shadow-lg shadow-accent/20" : "border-border hover:border-accent/50"
+                } ${
+                  pricingVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                } ${
+                  index === 0 ? 'delay-100' : 
+                  index === 1 ? 'delay-200' : 
+                  index === 2 ? 'delay-300' : 'delay-500'
                 }`}
               >
                 {plan.popular && (
@@ -418,8 +548,15 @@ export default function WealthNetworkLanding() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-20 px-4">
-        <div className="max-w-4xl mx-auto">
+      <section 
+        ref={faqRef}
+        className="py-12 sm:py-20 px-4"
+      >
+        <div className={`max-w-4xl mx-auto transition-all duration-1000 ease-out ${
+          faqVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-8'
+        }`}>
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
             <p className="text-lg sm:text-xl text-muted-foreground">
@@ -429,7 +566,20 @@ export default function WealthNetworkLanding() {
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <Card key={index} className="border-border hover:border-accent/50 transition-colors">
+              <Card 
+                key={index} 
+                className={`border-border hover:border-accent/50 transition-all duration-700 ease-out ${
+                  faqVisible 
+                    ? 'opacity-100 translate-x-0' 
+                    : 'opacity-0 -translate-x-4'
+                } ${
+                  index === 0 ? 'delay-200' : 
+                  index === 1 ? 'delay-300' : 
+                  index === 2 ? 'delay-500' : 
+                  index === 3 ? 'delay-700' : 
+                  index === 4 ? 'delay-1000' : 'delay-1000'
+                }`}
+              >
                 <CardContent className="p-0">
                   <button
                     className="w-full text-left p-6 flex justify-between items-center hover:bg-card/50 transition-colors"
@@ -455,8 +605,15 @@ export default function WealthNetworkLanding() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-8 sm:py-12 lg:py-20 px-3 sm:px-4 bg-card/5">
-        <div className="max-w-6xl mx-auto">
+      <section 
+        ref={testimonialsRef}
+        className="py-8 sm:py-12 lg:py-20 px-3 sm:px-4 bg-card/5"
+      >
+        <div className={`max-w-6xl mx-auto transition-all duration-1000 ease-out ${
+          testimonialsVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-8'
+        }`}>
           <div className="text-center mb-8 sm:mb-12 lg:mb-16 px-2">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 leading-tight">
               Real Results from Real Members
@@ -470,10 +627,20 @@ export default function WealthNetworkLanding() {
             {testimonials.map((testimonial, index) => (
               <Card
                 key={index}
-                className="border-border sm:hover:border-accent/50 transition-all duration-300 sm:hover:scale-105 sm:hover:shadow-lg sm:hover:shadow-accent/10 group touch-manipulation"
-                style={{
-                  animation: "fadeInUp 0.6s ease-out forwards",
-                }}
+                className={`border-border sm:hover:border-accent/50 transition-all duration-700 ease-out sm:hover:scale-105 sm:hover:shadow-lg sm:hover:shadow-accent/10 group touch-manipulation ${
+                  testimonialsVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                } ${
+                  index === 0 ? 'delay-200' : 
+                  index === 1 ? 'delay-300' : 
+                  index === 2 ? 'delay-500' : 
+                  index === 3 ? 'delay-700' : 
+                  index === 4 ? 'delay-1000' : 
+                  index === 5 ? 'delay-1000' :
+                  index === 6 ? 'delay-1000' :
+                  index === 7 ? 'delay-1000' : 'delay-1000'
+                }`}
               >
                 <CardContent className="p-4 sm:p-5 lg:p-6">
                   <div className="flex mb-3 sm:mb-4">
@@ -507,6 +674,106 @@ export default function WealthNetworkLanding() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust & Credibility Section */}
+      <section className="relative py-12 sm:py-16 lg:py-24 px-3 sm:px-4 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5"></div>
+        <div className="absolute top-10 left-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-10 right-10 w-40 h-40 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        
+        <div className="relative max-w-7xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <Badge className="mb-4 sm:mb-6 bg-primary/10 text-primary border-primary/20 text-sm sm:text-base px-4 py-2">
+              Trusted & Verified
+            </Badge>
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 text-foreground leading-tight">
+              Trusted by Industry Leaders
+            </h3>
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Building financial literacy through education, transparency, and community support
+            </p>
+          </div>
+
+          <div className="space-y-8 sm:space-y-12 lg:space-y-16">
+            {/* Featured Partner Card */}
+            <div className="flex justify-center">
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                <div className="relative bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:scale-105">
+                  <div className="text-center">
+                    <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-2xl mb-4 sm:mb-6">
+                      <Award className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+                    </div>
+                    <p className="text-sm sm:text-base text-muted-foreground mb-2 sm:mb-3 font-medium">Trusted by</p>
+                    <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary">
+                      DLAfinance
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-2 sm:mt-3">Industry Partnership</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Trust Indicators Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+              {/* Transparent Approach */}
+              <div className="group relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative bg-card/60 backdrop-blur-sm border border-border/50 rounded-2xl p-6 sm:p-8 text-center hover:shadow-xl transition-all duration-500 group-hover:scale-105 group-hover:border-primary/30">
+                  <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Shield className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
+                  </div>
+                  <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-primary mb-2 sm:mb-3">Transparent</h4>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">Teaching Approach</p>
+                  <div className="mt-4 sm:mt-6 h-1 bg-gradient-to-r from-primary/20 to-transparent rounded-full"></div>
+                </div>
+              </div>
+
+              {/* Educational Focus */}
+              <div className="group relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative bg-card/60 backdrop-blur-sm border border-border/50 rounded-2xl p-6 sm:p-8 text-center hover:shadow-xl transition-all duration-500 group-hover:scale-105 group-hover:border-primary/30">
+                  <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-2xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <BookOpen className="w-7 h-7 sm:w-8 sm:h-8 text-accent" />
+                  </div>
+                  <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-accent mb-2 sm:mb-3">Educational</h4>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">Content Focus</p>
+                  <div className="mt-4 sm:mt-6 h-1 bg-gradient-to-r from-accent/20 to-transparent rounded-full"></div>
+                </div>
+              </div>
+
+              {/* Community Learning */}
+              <div className="group relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative bg-card/60 backdrop-blur-sm border border-border/50 rounded-2xl p-6 sm:p-8 text-center hover:shadow-xl transition-all duration-500 group-hover:scale-105 group-hover:border-primary/30">
+                  <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Heart className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
+                  </div>
+                  <h4 className="text-lg sm:text-xl lg:text-2xl font-bold text-primary mb-2 sm:mb-3">Community</h4>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">Based Learning</p>
+                  <div className="mt-4 sm:mt-6 h-1 bg-gradient-to-r from-primary/20 to-transparent rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Disclaimer Section */}
+      <section className="py-6 sm:py-8 px-3 sm:px-4 bg-secondary/30 border-t border-border/50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center space-y-3 sm:space-y-4">
+            <h4 className="text-sm sm:text-base font-semibold text-foreground">Important Disclaimer</h4>
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              I am not a licensed financial advisor. The Wealth Network and all related content are for educational 
+              and informational purposes only and should not be considered professional financial advice. My goal is 
+              to spread financial literacy and empower people to make informed decisions about their money. Please do 
+              your own research or consult with a licensed financial advisor before making financial decisions.
+            </p>
           </div>
         </div>
       </section>

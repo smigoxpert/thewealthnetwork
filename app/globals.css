@@ -1,84 +1,46 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
-  /* Updated color tokens for The Wealth Network finance theme */
-  --background: oklch(0.1 0 0); /* Dark background #1a1a1a */
-  --foreground: oklch(1 0 0); /* White text */
-  --card: oklch(0.15 0.05 150); /* Dark green for cards #005f39 */
-  --card-foreground: oklch(1 0 0); /* White text on cards */
-  --popover: oklch(0.4 0.1 140); /* Medium green #4caf50 */
-  --popover-foreground: oklch(1 0 0);
-  --primary: oklch(0.85 0.15 85); /* Gold #ffd700 */
-  --primary-foreground: oklch(0.1 0 0); /* Dark text on gold */
-  --secondary: oklch(0.75 0 0); /* Light gray #c0c0c0 */
-  --secondary-foreground: oklch(0.1 0 0);
-  --muted: oklch(0.4 0.1 140); /* Medium green for muted */
-  --muted-foreground: oklch(1 0 0);
-  --accent: oklch(0.85 0.15 85); /* Gold for highlights */
-  --accent-foreground: oklch(0.1 0 0);
+  /* Light theme color tokens for The Wealth Network with Green & Gold */
+  --background: oklch(0.98 0 0); /* Light background #fafafa */
+  --foreground: oklch(0.15 0 0); /* Dark text */
+  --card: oklch(1 0 0); /* White cards */
+  --card-foreground: oklch(0.15 0 0); /* Dark text on cards */
+  --popover: oklch(1 0 0); /* White popover */
+  --popover-foreground: oklch(0.15 0 0); /* Dark text on popover */
+  --primary: oklch(0.55 0.15 150); /* Green primary #228B22 */
+  --primary-foreground: oklch(1 0 0); /* White text on green */
+  --secondary: oklch(0.95 0.05 150); /* Very light green #f0f8f0 */
+  --secondary-foreground: oklch(0.15 0 0); /* Dark text on secondary */
+  --muted: oklch(0.92 0.03 150); /* Light green muted areas */
+  --muted-foreground: oklch(0.45 0 0); /* Medium gray text */
+  --accent: oklch(0.75 0.15 85); /* Gold for highlights */
+  --accent-foreground: oklch(0.1 0 0); /* Dark text on accent */
   --destructive: oklch(0.55 0.2 15); /* Red for destructive */
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.3 0 0); /* Darker border for dark theme */
-  --input: oklch(0.15 0.05 150); /* Dark green for inputs */
-  --ring: oklch(0.85 0.15 85); /* Gold focus ring */
-  --chart-1: oklch(0.15 0.05 150); /* Dark green */
-  --chart-2: oklch(0.85 0.15 85); /* Gold */
-  --chart-3: oklch(0.4 0.1 140); /* Medium green */
-  --chart-4: oklch(0.75 0 0); /* Light gray */
+  --destructive-foreground: oklch(1 0 0); /* White text on red */
+  --border: oklch(0.85 0.05 150); /* Light green border */
+  --input: oklch(1 0 0); /* White inputs */
+  --ring: oklch(0.55 0.15 150); /* Green focus ring */
+  --chart-1: oklch(0.45 0.15 150); /* Dark green */
+  --chart-2: oklch(0.75 0.15 85); /* Gold */
+  --chart-3: oklch(0.65 0.12 140); /* Medium green */
+  --chart-4: oklch(0.8 0 0); /* Light gray */
   --chart-5: oklch(0.55 0.2 15); /* Red */
   --radius: 0.5rem;
-  --sidebar: oklch(0.1 0 0);
-  --sidebar-foreground: oklch(1 0 0);
-  --sidebar-primary: oklch(0.15 0.05 150);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.85 0.15 85);
-  --sidebar-accent-foreground: oklch(0.1 0 0);
-  --sidebar-border: oklch(0.3 0 0);
-  --sidebar-ring: oklch(0.85 0.15 85);
+  --sidebar: oklch(0.98 0 0); /* Light sidebar */
+  --sidebar-foreground: oklch(0.15 0 0); /* Dark text on sidebar */
+  --sidebar-primary: oklch(0.95 0.05 150); /* Light green sidebar primary */
+  --sidebar-primary-foreground: oklch(0.15 0 0); /* Dark text */
+  --sidebar-accent: oklch(0.75 0.15 85); /* Gold sidebar accent */
+  --sidebar-accent-foreground: oklch(0.1 0 0); /* Dark text on accent */
+  --sidebar-border: oklch(0.85 0.05 150); /* Light green border */
+  --sidebar-ring: oklch(0.55 0.15 150); /* Green focus ring */
   --font-dm-sans: "DM Sans", sans-serif;
   --font-space-grotesk: "Space Grotesk", serif;
 }
 
-.dark {
-  /* Dark mode uses same colors since we're designing for dark theme */
-  --background: oklch(0.1 0 0);
-  --foreground: oklch(1 0 0);
-  --card: oklch(0.15 0.05 150);
-  --card-foreground: oklch(1 0 0);
-  --popover: oklch(0.4 0.1 140);
-  --popover-foreground: oklch(1 0 0);
-  --primary: oklch(0.85 0.15 85);
-  --primary-foreground: oklch(0.1 0 0);
-  --secondary: oklch(0.75 0 0);
-  --secondary-foreground: oklch(0.1 0 0);
-  --muted: oklch(0.4 0.1 140);
-  --muted-foreground: oklch(1 0 0);
-  --accent: oklch(0.85 0.15 85);
-  --accent-foreground: oklch(0.1 0 0);
-  --destructive: oklch(0.55 0.2 15);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.3 0 0);
-  --input: oklch(0.15 0.05 150);
-  --ring: oklch(0.85 0.15 85);
-  --chart-1: oklch(0.15 0.05 150);
-  --chart-2: oklch(0.85 0.15 85);
-  --chart-3: oklch(0.4 0.1 140);
-  --chart-4: oklch(0.75 0 0);
-  --chart-5: oklch(0.55 0.2 15);
-  --sidebar: oklch(0.1 0 0);
-  --sidebar-foreground: oklch(1 0 0);
-  --sidebar-primary: oklch(0.15 0.05 150);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.85 0.15 85);
-  --sidebar-accent-foreground: oklch(0.1 0 0);
-  --sidebar-border: oklch(0.3 0 0);
-  --sidebar-ring: oklch(0.85 0.15 85);
-  --font-dm-sans: "DM Sans", sans-serif;
-  --font-space-grotesk: "Space Grotesk", serif;
-}
+
 
 @theme inline {
   --color-background: var(--background);
