@@ -336,7 +336,7 @@ export default function WealthNetworkLanding() {
         }`}>
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <Badge className="mb-4 bg-accent/10 text-accent border-accent/20 text-sm sm:text-base px-3 py-1">
-              <span className="text-white">FREE TO JOIN</span>
+              FREE TO JOIN
             </Badge>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 leading-tight">
               Start Your Journey in Our Discord Community
