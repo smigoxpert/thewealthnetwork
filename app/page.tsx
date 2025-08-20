@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Check, TrendingUp, BarChart3, DollarSign, Users, Instagram, ChevronDown } from "lucide-react"
+import { Check, TrendingUp, BarChart3, DollarSign, Users, Instagram, ChevronDown, MessageSquare, BookOpen, PlayCircle, TrendingUp as Growth } from "lucide-react"
 import { useState } from "react"
 
 export default function WealthNetworkLanding() {
@@ -78,27 +78,75 @@ export default function WealthNetworkLanding() {
 
   const testimonials = [
     {
-      name: "Marcus Thompson",
-      role: "Software Engineer & Part-time Trader",
+      name: "Sarah Chen",
+      role: "College Graduate",
       content:
-        "Started with the Learner plan 6 months ago, now I'm consistently making 15-20% monthly returns. The daily alerts are game-changers!",
-      avatar: "/young-black-male-professional-headshot.png",
-      rating: 5,
-    },
-    {
-      name: "Jessica Park",
-      role: "Marketing Manager",
-      content:
-        "I was skeptical about investing, but the educational resources made everything click. Made my first $5K profit last month!",
+        "When I first joined The Wealth Network, I was living paycheck to paycheck with no clue how to make money work for me. I had tried reading blogs and watching YouTube videos, but I always ended up confused and overwhelmed. Serenity broke everything down in such a simple, human way that I finally understood what steps to take. Within a few weeks, I created my first budget that actually worked and started saving consistently. Three days later, I opened an investment account and now I watch my money grow every single month. It's such a relief to know I'm not guessing anymore. I finally feel like I have control over my future.",
       avatar: "/asian-woman-professional-headshot-smiling.png",
       rating: 5,
     },
     {
-      name: "David Rodriguez",
-      role: "Small Business Owner",
+      name: "Jordan Kim",
+      role: "Recent Graduate",
       content:
-        "The 1-on-1 mentorship is worth every penny. My mentor helped me turn $10K into $28K in just 4 months. Life-changing!",
+        "I joined because I wanted to stop stressing about money all the time. I didn't know where to start, and honestly, I was embarrassed by how little I knew. The server gave me not just knowledge but also the confidence to use it. Serenity's guidance made me realize that wealth isn't about being lucky or born into money, its about learning how to manage it. Now I've built up an emergency fund, invested in ETFs, and even have a plan to pay off my debt faster. The best part is I feel proud of myself for taking action instead of just wishing things would change. I never thought I'd say this, but money is something I actually feel good about now.",
+      avatar: "/young-black-male-professional-headshot.png",
+      rating: 5,
+    },
+    {
+      name: "Marcus Thompson",
+      role: "Software Engineer",
+      content:
+        "She made investing feel so much less scary. I finally feel like I know what I'm doing with my money.",
       avatar: "/hispanic-businessman-professional.png",
+      rating: 5,
+    },
+    {
+      name: "Maya Patel",
+      role: "Administrative Assistant",
+      content:
+        "I had always dreamed of financial freedom but didn't know how to get there. Before this, I was constantly stressed about bills, never had savings, and avoided checking my bank account like the plague lol. Serenity's way of teaching felt so real and approachable and it didn't sound like a textbook, it's like a friend showing me the ropes. I started small, but those small steps added up fast. Now I have an emergency fund, I'm investing every month, and I even helped my younger brother start his first savings account because I wanted him to learn early too.",
+      avatar: "/professional-woman-diverse.png",
+      rating: 5,
+    },
+    {
+      name: "Emily Rodriguez",
+      role: "Teacher",
+      content:
+        "I used to think wealth building was something only rich or super smart people could do. Serenity explained it in a way that actually made sense to me. Now I'm saving consistently, investing monthly, and for the first time in my life, I feel financially secure.",
+      avatar: "/professional-man.png",
+      rating: 5,
+    },
+    {
+      name: "David Martinez",
+      role: "Retail Manager",
+      content:
+        "In just a few months I went from having no savings to building a portfolio I'm proud of. It is crazy to be making the extra money on the side, and I don't even have to do any work.",
+      avatar: "/placeholder-user.jpg",
+      rating: 5,
+    },
+    {
+      name: "Taylor Johnson",
+      role: "Nursing Student",
+      content:
+        "I always thought budgeting and investing were boring and too hard to understand, but the way Serenity teaches it actually makes me excited to learn. I've paid off credit card debt, started saving, and even set up my first investment account. This has been life changing for me. I know what to do when I have kids haha! I can make them millionaires.",
+      avatar: "/asian-woman-professional-headshot-smiling.png",
+      rating: 5,
+    },
+    {
+      name: "Jasmine Williams",
+      role: "Marketing Coordinator",
+      content:
+        "I joined because I was tired of being broke and confused. Her system gave me a clear plan I could actually stick to. I started with the Learner plan and it got me interested, so I joined the investors. Within weeks, I was already making profit and I set up my Roth IRA and my brokerage!",
+      avatar: "/professional-woman-diverse.png",
+      rating: 5,
+    },
+    {
+      name: "Alex Foster",
+      role: "Freelance Designer",
+      content:
+        "What I love most is that Serenity doesn't overcomplicate anything. It's straightforward, practical, and easy to follow. It is actually fun to read and I like her templates and designs.",
+      avatar: "/professional-man.png",
       rating: 5,
     },
   ]
@@ -169,7 +217,7 @@ export default function WealthNetworkLanding() {
             Start your investing journey fully equipped with the knowledge to succeed.
           </p>
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-            Don’t guess success–choose it.
+          Money grows where knowledge flows.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
@@ -188,6 +236,122 @@ export default function WealthNetworkLanding() {
             >
               View Plans
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Discord Section */}
+      <section className="py-8 sm:py-12 lg:py-20 px-3 sm:px-4 bg-gradient-to-br from-primary/5 to-accent/5">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+            <Badge className="mb-4 bg-accent/10 text-accent border-accent/20 text-sm sm:text-base px-3 py-1">
+              FREE TO JOIN
+            </Badge>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 leading-tight">
+              Start Your Journey in Our Discord Community
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Get started with essential investing knowledge before diving into our premium plans. Perfect for complete beginners!
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
+            {/* Left side - Features */}
+            <div className="space-y-4 sm:space-y-6">
+              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-card/20 border border-border/50">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-xl flex items-center justify-center">
+                  <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground text-sm sm:text-base lg:text-lg mb-1 sm:mb-2">
+                    What is investing and why should you start?
+                  </h3>
+                  <p className="text-xs sm:text-sm lg:text-base text-muted-foreground leading-relaxed">
+                    Learn the fundamentals of investing and understand why it's crucial for building wealth over time.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-card/20 border border-border/50">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-xl flex items-center justify-center">
+                  <MessageSquare className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground text-sm sm:text-base lg:text-lg mb-1 sm:mb-2">
+                    Key terms and definitions
+                  </h3>
+                  <p className="text-xs sm:text-sm lg:text-base text-muted-foreground leading-relaxed">
+                    Master essential investing vocabulary with clear, easy-to-understand explanations.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-card/20 border border-border/50">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-xl flex items-center justify-center">
+                  <Growth className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground text-sm sm:text-base lg:text-lg mb-1 sm:mb-2">
+                    Growth examples
+                  </h3>
+                  <p className="text-xs sm:text-sm lg:text-base text-muted-foreground leading-relaxed">
+                    See real examples of how compound interest and smart investing can grow your money.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-card/20 border border-border/50">
+                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-xl flex items-center justify-center">
+                  <PlayCircle className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground text-sm sm:text-base lg:text-lg mb-1 sm:mb-2">
+                    Videos and visuals
+                  </h3>
+                  <p className="text-xs sm:text-sm lg:text-base text-muted-foreground leading-relaxed">
+                    Engaging video content and visual guides that make complex concepts simple to understand.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right side - CTA Card */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-3xl blur-2xl transform rotate-2"></div>
+              <Card className="relative border-accent/20 bg-card/90 backdrop-blur-sm">
+                <CardContent className="p-6 sm:p-8 text-center">
+                  <div className="mb-6">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <MessageSquare className="w-8 h-8 sm:w-10 sm:h-10 text-accent" />
+                    </div>
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 text-foreground">
+                      Join Our Discord
+                    </h3>
+                    <p className="text-sm sm:text-base text-muted-foreground mb-4">
+                      Connect with like-minded investors and get started with free educational content
+                    </p>
+                    <div className="flex items-center justify-center gap-2 text-accent font-semibold text-lg sm:text-xl">
+                      <span>FREE</span>
+                      <Badge variant="outline" className="border-accent/20 text-accent bg-accent/5">
+                        $0/month
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <Button 
+                    size="lg" 
+                    className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-base sm:text-lg px-6 py-3 sm:py-4 rounded-xl font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/25"
+                    onClick={() => window.open("https://discord.gg/your-discord-link", "_blank")}
+                  >
+                    Join Discord Community
+                  </Button>
+
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-4 leading-relaxed">
+                    No payment required • Instant access • Beginner-friendly
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -291,51 +455,53 @@ export default function WealthNetworkLanding() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-12 sm:py-20 px-4 bg-card/5">
+      <section className="py-8 sm:py-12 lg:py-20 px-3 sm:px-4 bg-card/5">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Real Results from Real Members</h2>
-            <p className="text-lg sm:text-xl text-muted-foreground">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16 px-2">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 leading-tight">
+              Real Results from Real Members
+            </h2>
+            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Join thousands who've transformed their financial future with The Wealth Network
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {testimonials.map((testimonial, index) => (
               <Card
                 key={index}
-                className="border-border hover:border-accent/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-accent/10 group"
+                className="border-border sm:hover:border-accent/50 transition-all duration-300 sm:hover:scale-105 sm:hover:shadow-lg sm:hover:shadow-accent/10 group touch-manipulation"
                 style={{
                   animation: "fadeInUp 0.6s ease-out forwards",
                 }}
               >
-                <CardContent className="pt-6">
-                  <div className="flex mb-4">
+                <CardContent className="p-4 sm:p-5 lg:p-6">
+                  <div className="flex mb-3 sm:mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <svg key={i} className="w-5 h-5 text-accent fill-current" viewBox="0 0 20 20">
+                      <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-accent fill-current" viewBox="0 0 20 20">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                       </svg>
                     ))}
                   </div>
 
-                  <p className="text-muted-foreground mb-6 italic leading-relaxed text-sm sm:text-base">
+                  <blockquote className="text-muted-foreground mb-4 sm:mb-5 lg:mb-6 leading-relaxed text-sm sm:text-base lg:text-base font-normal">
                     "{testimonial.content}"
-                  </p>
+                  </blockquote>
 
-                  <div className="flex items-center gap-4">
-                    <div className="relative">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="relative flex-shrink-0">
                       <img
                         src={testimonial.avatar || "/placeholder.svg"}
                         alt={testimonial.name}
-                        className="w-12 h-12 rounded-full border-2 border-accent/20 group-hover:border-accent/50 transition-colors"
+                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-accent/20 sm:group-hover:border-accent/50 transition-colors"
                       />
-                      <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-accent rounded-full flex items-center justify-center">
-                        <Check className="w-3 h-3 text-accent-foreground" />
+                      <div className="absolute -bottom-0.5 -right-0.5 sm:-bottom-1 sm:-right-1 w-4 h-4 sm:w-5 sm:h-5 bg-accent rounded-full flex items-center justify-center">
+                        <Check className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-accent-foreground" />
                       </div>
                     </div>
-                    <div>
-                      <p className="font-semibold text-foreground text-sm sm:text-base">{testimonial.name}</p>
-                      <p className="text-xs sm:text-sm text-muted-foreground">{testimonial.role}</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-semibold text-foreground text-sm sm:text-base truncate">{testimonial.name}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground truncate">{testimonial.role}</p>
                     </div>
                   </div>
                 </CardContent>
