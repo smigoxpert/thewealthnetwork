@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge"
 import { Check, TrendingUp, BarChart3, DollarSign, Users, Instagram, ChevronDown, MessageSquare, BookOpen, PlayCircle, TrendingUp as Growth, Shield, Heart, Award } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
+import Image from "next/image"
 
 export default function WealthNetworkLanding() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -56,7 +57,7 @@ export default function WealthNetworkLanding() {
   const pricingPlans = [
     {
       name: "Learner",
-      price: "$5",
+      price: "$4",
       period: "/month",
       description: "Perfect for beginners starting their investment journey",
       features: [
@@ -71,7 +72,7 @@ export default function WealthNetworkLanding() {
     },
     {
       name: "Investing",
-      price: "$19",
+      price: "$10",
       period: "/month",
       description: "Advanced tools for serious investors",
       features: [
@@ -104,7 +105,7 @@ export default function WealthNetworkLanding() {
     },
     {
       name: "1-on-1 Mentorship",
-      price: "$1,049.99",
+      price: "$1,499",
       period: "/ 3 months",
       description: "Personalized mentorship and exclusive access",
       features: [
@@ -298,24 +299,15 @@ export default function WealthNetworkLanding() {
                 <div className="relative bg-card/20 backdrop-blur-sm border border-border/20 rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-2xl">
                   {/* Owner Image */}
                   <div className="aspect-[4/3] lg:aspect-[3/4] rounded-xl lg:rounded-2xl relative overflow-hidden">
-                    <img
-                      src="/owner.webp"
+                    <Image
+                      src="/owner.jpg"
                       alt="The Wealth Network Founder"
-                      className="w-full h-full object-cover object-center"
+                      fill
+                      className="object-cover object-center"
+                      quality={95}
+                      priority
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    
-                    {/* Floating elements to simulate app UI */}
-                    <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-card/80 backdrop-blur-sm border border-border/20 rounded-lg p-2 sm:p-3">
-                      <div className="flex items-center gap-1 sm:gap-2">
-                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                        <span className="text-xs font-medium text-foreground">+12.5%</span>
-                      </div>
-                    </div>
-                    
-                    <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 bg-card/80 backdrop-blur-sm border border-border/20 rounded-lg p-2 sm:p-3">
-                      <div className="text-xs text-muted-foreground">Growth Track</div>
-                      <div className="text-sm sm:text-base font-bold text-accent">On Target</div>
-                    </div>
                   </div>
                 </div>
               </div>
